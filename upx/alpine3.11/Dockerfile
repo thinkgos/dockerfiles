@@ -1,10 +1,11 @@
 # build stage
 FROM alpine:3.11.6 as builder
 
+ARG ALPINE_VERSION=v3.11
 ARG UPX_VERSION=3.96
 
-RUN echo https://mirrors.aliyun.com/alpine/v3.11/main > /etc/apk/repositories \
-	&& echo https://mirrors.aliyun.com/alpine/v3.11/community >> /etc/apk/repositories
+RUN echo https://mirrors.aliyun.com/alpine/${ALPINE_VERSION}/main > /etc/apk/repositories \
+	&& echo https://mirrors.aliyun.com/alpine/${ALPINE_VERSION}/community >> /etc/apk/repositories
 
 # download source and compile
 RUN apk add --no-cache \
